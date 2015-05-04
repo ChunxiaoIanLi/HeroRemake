@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="./js/CLient/client.js"></script>
-	<script src="./js/Server/server.js"></script>
+	<!--<script src="/client.js"></script>-->
+	<script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
 	Email:<br>
@@ -13,4 +13,21 @@
 
 	<p id="test"></p>
 </body>
+<script>
+	var socket = io.connect("http://localhost:8000");
+
+	socket.on("message",function(message){
+		console.log(message);
+	});
+
+	function login(){
+		var email = document.getElementById("email").value;
+		var password = document.getElementById("password").value;
+		var login={
+			email:email,
+			password:password
+		};
+		socket.emit("login", login);
+	}
+</script>
 </html>
