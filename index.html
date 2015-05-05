@@ -4,21 +4,17 @@
 	<!--<script src="/client.js"></script>-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="http://connect.facebook.net/en_US/all.js"></script>
 </head>
 <body>
 	<!--fb login-->
-	<script>
-		$(document).ready(function() {
-			$.ajaxSetup({ cache: true });
-			$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
-		    	FB.init({
-			    	appId: '{your-app-id}',
-			    	version: 'v2.3' // or v2.0, v2.1, v2.0
-			    });     
-			    $('#loginbutton,#feedbutton').removeAttr('disabled');
-			    FB.getLoginStatus(updateStatusCallback);
-			});
-		});
+	<script language="javascript" type="text/javascript">
+		FB.init({
+			appId: '872795129456979',
+			status: true, 
+			cookie: true, 
+			xfbml: true
+		});    
 	</script>
     <!--login-->
 	Email:<br>
@@ -28,8 +24,7 @@
 	<button type="button" onclick="login()">Log in</button>
 	<p id="test"></p>
 
-	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-	</fb:login-button>
+	<fb:login-button autologoutlink="true" onlogin="OnRequestPermission();"></fb:login-button>
 
 	<div id="status">
 </div>
