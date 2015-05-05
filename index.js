@@ -9,11 +9,11 @@ app.get("/", function(req, res) {
 
 io.on("connection", function(client) {
     client.emit("message", "you are connected");
+    client.on("login", function(data) {
+	    console.log(data.email);
+	});
 });
 
-io.on("login", function(data) {
-	client.emit("message", "you are connected");
-    console.log(data.email);
-});
+
 
 server.listen(8000);
