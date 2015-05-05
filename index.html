@@ -7,7 +7,7 @@
 </head>
 <body>
 	<!--fb login-->
-	<script language="javascript" type="text/javascript">
+	<script>
 				  
 		function statusChangeCallback(response) {
 		    if (response.status === 'connected') {
@@ -51,7 +51,6 @@
 		}(document, 'script', 'facebook-jssdk'));
 
 		function testAPI() {
-		    console.log('Welcome!  Fetching your information.... ');
 		    FB.api('/me', function(response) {
 		    	console.log(response);
 		      	document.getElementById('status').innerHTML =
@@ -68,7 +67,7 @@
 	<button type="button" onclick="login()">Log in</button>
 	<p id="test"></p>
 
-	<fb:login-button autologoutlink="true"></fb:login-button>
+	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 
 	<div id="status">
 </div>
