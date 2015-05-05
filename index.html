@@ -4,18 +4,26 @@
 	<!--<script src="/client.js"></script>-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="http://connect.facebook.net/en_US/all.js"></script>
 </head>
 <body>
 	<!--fb login-->
 	<script language="javascript" type="text/javascript">
-		FB.init({
-			appId: '872795129456979',
-			status: true, 
-			cookie: true, 
-			xfbml: true
-		});    
-	</script>
+		window.fbAsyncInit = function() {
+		    FB.init({
+			    appId      : '872795129456979',
+			    xfbml      : true,
+			    version    : 'v2.3'
+			});
+		};
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>    
     <!--login-->
 	Email:<br>
 	<input type="text" id="email" value=""><br>
@@ -30,7 +38,8 @@
 </div>
 </body>
 <script>
-	var socket = io.connect("http://192.219.237.61:3000");
+
+	var socket = io.connect("http://localhost:8000");
 
 	socket.on("message",function(message){
 		console.log(message);
