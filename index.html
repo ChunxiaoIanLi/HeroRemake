@@ -56,6 +56,21 @@
 		        	'Thanks for logging in, ' + response.name + '!';
 		    });
 		}
+		 function FBInvite(){
+		  FB.ui({
+		   method: 'apprequests',
+		   message: 'Invite your Facebook Friends'
+		  },function(response) {
+		   if (response) {
+		alert('Successfully Invited');
+		   } else {
+		alert('Failed To Invite');
+		   }
+		  });
+		}
+
+ 
+ 
 
 	</script>    
     <!--login-->
@@ -67,7 +82,7 @@
 	<p id="test"></p>
 
 	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" data-auto-logout-link="true"></fb:login-button>
-
+	<a href="#" onclick="FBInvite();">invite friends</a>
 	<div id="status">
 </div>
 </body>
