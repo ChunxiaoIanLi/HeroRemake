@@ -6,9 +6,8 @@
 	<script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-	<!--fb login-->
-	<script>
-				  
+        <!--fb login-->
+        <script>			  
 		function statusChangeCallback(response) {
 		    if (response.status === 'connected') {
 		      testAPI();
@@ -67,14 +66,14 @@
 	<button type="button" onclick="login()">Log in</button>
 	<p id="test"></p>
 
-	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" data-auto-logout-link="true"></fb:login-button>
 
 	<div id="status">
 </div>
 </body>
 <script>
-
-	var socket = io.connect("http://localhost:8000");
+        <!--192.219.237.61-->
+	var socket = io.connect("http://192.219.237.61:3000");
 
 	socket.on("message",function(message){
 		console.log(message);
